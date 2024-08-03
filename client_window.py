@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QTableWidget, QTableWidgetItem, \
-    QPushButton, QDialog, QFormLayout, QLineEdit, QCheckBox
+    QPushButton, QDialog, QFormLayout, QLineEdit, QCheckBox, QComboBox
 from PyQt5.QtCore import Qt, QDate
 from lojaDB import buscar_compras, registrar_compra, editar_compra, excluir_compra
 from utils import criar_seletor_data
@@ -10,8 +10,8 @@ class ClientWindow(QWidget):
     def __init__(self, client_id):
         super().__init__()
         self.client_id = client_id
-        self.setWindowTitle('Detalhes do Cliente')
-        self.setGeometry(100, 100, 800, 600)
+        self.setWindowTitle('Controle de Pedidos do Cliente - LL Cutelaria')
+        self.setGeometry(100, 100, 900, 600)
         self.initUI()
 
     def initUI(self):
@@ -19,9 +19,9 @@ class ClientWindow(QWidget):
 
         # Lista de compras
         self.table_compras = QTableWidget()
-        self.table_compras.setColumnCount(8)  # Atualizar o número de colunas
+        self.table_compras.setColumnCount(10)  # Atualizar o número de colunas
         self.table_compras.setHorizontalHeaderLabels(
-            ["Número Item", "ID", "Data da Venda", "Produto", "Data de Pagamento", "Data de Envio",
+            ["Número Item", "ID", "Data da Venda", "Produto", "Valor da Venda", "Modo de Pagamento", "Data de Pagamento", "Data de Envio",
              "Código de Rastreio", "Enviado?"])
         self.table_compras.setSelectionBehavior(QTableWidget.SelectRows)
         self.table_compras.setEditTriggers(QTableWidget.NoEditTriggers)
@@ -49,6 +49,31 @@ class ClientWindow(QWidget):
         self.setLayout(main_layout)
         self.load_compras()
         self.table_compras.resizeColumnsToContents()  # Ajustar após carregar os dados
+
+        # Aplicar estilo diretamente
+        self.setStyleSheet("""
+                            QWidget {
+                                background-color: #f0f0f0;
+                            }
+                            
+                            QHeaderView::section {
+                                background-color: #f0f0f0; 
+                                color: black; 
+                            }
+                            QPushButton {
+                                background-color: #3c4c7d;
+                                color: white;
+                                border-radius: 5px;
+                                padding: 10px;
+                                font-size: 16px;
+                            }
+                            QPushButton:hover {
+                                background-color: #24346c;
+                            }
+                            QPushButton:pressed {
+                                background-color: #465184;
+                            }
+                        """)
 
     def load_compras(self):
         compras = buscar_compras(self.client_id)
@@ -91,7 +116,7 @@ class ClientWindow(QWidget):
     def excluir_compra(self):
         selected_row = self.table_compras.currentRow()
         if selected_row != -1:
-            compra_id = self.table_compras.item(selected_row, 1).text()  # Ajustar para pegar o ID correto
+            compra_id = self.table_compras.item(selected_row, 0).text()  # Ajustar para pegar o ID correto
             excluir_compra(compra_id)
             self.load_compras()
 
@@ -109,6 +134,9 @@ class CompraDialog(QDialog):
 
         self.input_data_venda = criar_seletor_data()
         self.input_produto = QLineEdit()
+        self.input_valor_venda = QLineEdit()
+        self.input_modo_pagamento = QComboBox()
+        self.input_modo_pagamento.addItems(["Pix", "Débito", "Crédito", "Dinheiro"])
         self.input_data_pagamento = criar_seletor_data()
         self.input_data_envio = criar_seletor_data()
         self.input_codigo_rastreio = QLineEdit()
@@ -118,13 +146,17 @@ class CompraDialog(QDialog):
             # Certifique-se de que os dados são strings e estão no formato correto
             self.input_data_venda.setDate(QDate.fromString(str(self.compra_data[2]), 'dd-MM-yyyy'))
             self.input_produto.setText(self.compra_data[3])
-            self.input_data_pagamento.setDate(QDate.fromString(str(self.compra_data[4]), 'dd-MM-yyyy'))
-            self.input_data_envio.setDate(QDate.fromString(str(self.compra_data[5]), 'dd-MM-yyyy'))
-            self.input_codigo_rastreio.setText(self.compra_data[6])
-            self.checkbox_enviado.setChecked(bool(self.compra_data[7]))  # Verifica o valor da coluna "Enviado?"
+            self.input_valor_venda.setText(str(self.compra_data[4]))
+            self.input_modo_pagamento.setCurrentText(self.compra_data[5])
+            self.input_data_pagamento.setDate(QDate.fromString(str(self.compra_data[6]), 'dd-MM-yyyy'))
+            self.input_data_envio.setDate(QDate.fromString(str(self.compra_data[7]), 'dd-MM-yyyy'))
+            self.input_codigo_rastreio.setText(self.compra_data[8])
+            self.checkbox_enviado.setChecked(bool(self.compra_data[9]))  # Verifica o valor da coluna "Enviado?"
 
         layout.addRow("Data da Venda:", self.input_data_venda)
         layout.addRow("Produto:", self.input_produto)
+        layout.addRow("Valor da Venda:", self.input_valor_venda)
+        layout.addRow("Modo de Pagamento:", self.input_modo_pagamento)
         layout.addRow("Data de Pagamento:", self.input_data_pagamento)
         layout.addRow("Data de Envio:", self.input_data_envio)
         layout.addRow("Código de Rastreio:", self.input_codigo_rastreio)
@@ -139,6 +171,8 @@ class CompraDialog(QDialog):
     def save_compra(self):
         data_venda = self.input_data_venda.date().toString('dd-MM-yyyy')
         produto = self.input_produto.text()
+        valor_venda = float(self.input_valor_venda.text()).replace(',','.') #substituir vírgula por .
+        modo_pagamento = self.input_modo_pagamento.currentText()
         data_pagamento = self.input_data_pagamento.date().toString('dd-MM-yyyy')
         data_envio = self.input_data_envio.date().toString('dd-MM-yyyy')
         codigo_rastreio = self.input_codigo_rastreio.text()
@@ -146,10 +180,10 @@ class CompraDialog(QDialog):
 
         try:
             if self.compra_data:
-                editar_compra(self.compra_data[0], self.client_id, data_venda, produto, data_pagamento, data_envio,
+                editar_compra(self.compra_data[0], self.client_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio,
                               codigo_rastreio, enviado)
             else:
-                registrar_compra(self.client_id, data_venda, produto, data_pagamento, data_envio, codigo_rastreio, enviado)
+                registrar_compra(self.client_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio, codigo_rastreio, enviado)
 
             self.accept()
         except Exception as e:

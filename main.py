@@ -7,7 +7,7 @@ from client_window import ClientWindow
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle('Sistema de Controle de Clientes')
+        self.setWindowTitle('Sistema de Controle de Clientes - LL Cutelaria')
         self.setGeometry(100, 100, 800, 600)
         self.initUI()
 
@@ -54,6 +54,31 @@ class MainWindow(QWidget):
 
         self.setLayout(main_layout)
         self.load_clientes()
+
+        # Aplicar estilo diretamente
+        self.setStyleSheet("""
+                            QWidget {
+                                background-color: #f0f0f0;
+                            }
+
+                            QHeaderView::section {
+                                background-color: #f0f0f0; 
+                                color: black; 
+                            }
+                            QPushButton {
+                                background-color: #3c4c7d;
+                                color: white;
+                                border-radius: 5px;
+                                padding: 10px;
+                                font-size: 16px;
+                            }
+                            QPushButton:hover {
+                                background-color: #24346c;
+                            }
+                            QPushButton:pressed {
+                                background-color: #465184;
+                            }
+                        """)
 
     def load_clientes(self):
         clientes = buscar_clientes()

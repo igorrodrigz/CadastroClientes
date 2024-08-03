@@ -21,6 +21,8 @@ def init_db():
                 cliente_id INTEGER NOT NULL,
                 data_venda TEXT NOT NULL,
                 produto TEXT NOT NULL,
+                valor_venda REAL NOT NULL,
+                modo_pagamento TEXT NOT NULL,
                 data_pagamento TEXT NOT NULL,
                 data_envio TEXT NOT NULL,
                 codigo_rastreio TEXT NOT NULL,
@@ -104,26 +106,26 @@ def buscar_cliente_por_id(client_id):
         conn.close()
     return cliente
 
-def registrar_compra(cliente_id, data_venda, produto, data_pagamento, data_envio, codigo_rastreio, enviado=0):
+def registrar_compra(cliente_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio, codigo_rastreio, enviado=0):
     try:
         conn = sqlite3.connect('clientes.db')
         c = conn.cursor()
         c.execute('''
-            INSERT INTO compras (cliente_id, data_venda, produto, data_pagamento, data_envio, codigo_rastreio, enviado) VALUES (?, ?, ?, ?, ?, ?, ?)
-        ''', (cliente_id, data_venda, produto, data_pagamento, data_envio, codigo_rastreio, int(enviado)))
+            INSERT INTO compras (cliente_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio, codigo_rastreio, enviado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (cliente_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio, codigo_rastreio, int(enviado)))
         conn.commit()
     except Exception as e:
         print(f"Erro ao registrar compra: {e}")
     finally:
         conn.close()
 
-def editar_compra(compra_id, cliente_id, data_venda, produto, data_pagamento, data_envio, codigo_rastreio, enviado):
+def editar_compra(compra_id, cliente_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio, codigo_rastreio, enviado):
     try:
         conn = sqlite3.connect('clientes.db')
         c = conn.cursor()
         c.execute('''
-            UPDATE compras SET data_venda = ?, produto = ?, data_pagamento = ?, data_envio = ?, codigo_rastreio = ?, enviado = ? WHERE id = ? AND cliente_id = ?
-        ''', (data_venda, produto, data_pagamento, data_envio, codigo_rastreio, enviado, compra_id, cliente_id))
+            UPDATE compras SET data_venda = ?, produto = ?, valor_venda = ?, modo_pagamento = ?, data_pagamento = ?, data_envio = ?, codigo_rastreio = ?, enviado = ? WHERE id = ? AND cliente_id = ?
+        ''', (data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio, codigo_rastreio, enviado, compra_id, cliente_id))
         conn.commit()
     except Exception as e:
         print(f"Erro ao editar compra: {e}")
@@ -156,8 +158,6 @@ def buscar_compras(cliente_id, compra_id=None):
     finally:
         conn.close()
     return compras
-
-
 
 if __name__ == '__main__':
     init_db()

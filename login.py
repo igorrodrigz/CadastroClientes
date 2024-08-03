@@ -34,7 +34,7 @@ class LoginWindow(QWidget):
         user = self.input_user.text()
         password = self.input_password.text()
 
-        if user == 'karina12' and password == 'loja12':
+        if user == 'usuario' and password == 'senha':
             QMessageBox.information(self, 'Login', 'Login bem-sucedido!')
             self.close()
             self.open_main_window()
