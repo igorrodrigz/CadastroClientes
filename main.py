@@ -1,4 +1,6 @@
 import sys
+
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout, QTableWidget, QTableWidgetItem, QMessageBox, QDialog, QFormLayout
 from PyQt5.QtCore import Qt
 from lojaDB import init_db, cadastrar_cliente, editar_cliente, excluir_cliente, buscar_clientes, buscar_cliente_por_id
@@ -8,11 +10,14 @@ class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle('Sistema de Controle de Clientes - LL Cutelaria')
-        self.setGeometry(100, 100, 800, 600)
+        self.setGeometry(100, 100, 900, 600)
         self.initUI()
 
     def initUI(self):
         main_layout = QVBoxLayout()
+
+        # Logo na barra
+        self.setWindowIcon(QIcon('logos/logoLL.png'))
 
         # Barra de busca
         search_layout = QHBoxLayout()
@@ -105,23 +110,26 @@ class MainWindow(QWidget):
     def editar_cliente(self):
         selected_row = self.table_clientes.currentRow()
         if selected_row != -1:
-            client_id = self.table_clientes.item(selected_row, 0).text()
+            client_id = int(self.table_clientes.item(selected_row, 0).text())
             client_data = buscar_cliente_por_id(client_id)
-            dialog = ClientDialog(self, client_data)
-            if dialog.exec_():
-                self.load_clientes()
+            if client_data:
+                dialog = ClientDialog(self, client_data)
+                if dialog.exec_():
+                    self.load_clientes()
+            else:
+                QMessageBox.warning(self, "Aviso", "Cliente não encontrado.")
 
     def excluir_cliente(self):
         selected_row = self.table_clientes.currentRow()
         if selected_row != -1:
-            client_id = self.table_clientes.item(selected_row, 0).text()
+            client_id = int(self.table_clientes.item(selected_row, 0).text())
             excluir_cliente(client_id)
             self.load_clientes()
 
     def abrir_cliente(self):
         selected_row = self.table_clientes.currentRow()
         if selected_row != -1:
-            client_id = self.table_clientes.item(selected_row, 0).text()
+            client_id = int(self.table_clientes.item(selected_row, 0).text())
             self.client_window = ClientWindow(client_id)
             self.client_window.show()
 
@@ -177,6 +185,7 @@ class ClientDialog(QDialog):
 if __name__ == '__main__':
     init_db()
     app = QApplication(sys.argv)
+    app.setStyle('Fusion')
     main_window = MainWindow()
     main_window.show()
     sys.exit(app.exec_())

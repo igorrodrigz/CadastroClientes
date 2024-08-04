@@ -1,16 +1,15 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QTableWidget, QTableWidgetItem, \
-    QPushButton, QDialog, QFormLayout, QLineEdit, QCheckBox, QComboBox
+    QPushButton, QDialog, QFormLayout, QLineEdit, QCheckBox, QComboBox, QDateEdit
 from PyQt5.QtCore import Qt, QDate
 from lojaDB import buscar_compras, registrar_compra, editar_compra, excluir_compra
 from utils import criar_seletor_data
-
 
 class ClientWindow(QWidget):
     def __init__(self, client_id):
         super().__init__()
         self.client_id = client_id
-        self.setWindowTitle('Controle de Pedidos do Cliente - LL Cutelaria')
+        self.setWindowTitle('Detalhes do Cliente')
         self.setGeometry(100, 100, 900, 600)
         self.initUI()
 
@@ -21,8 +20,8 @@ class ClientWindow(QWidget):
         self.table_compras = QTableWidget()
         self.table_compras.setColumnCount(10)  # Atualizar o número de colunas
         self.table_compras.setHorizontalHeaderLabels(
-            ["Número Item", "ID", "Data da Venda", "Produto", "Valor da Venda", "Modo de Pagamento", "Data de Pagamento", "Data de Envio",
-             "Código de Rastreio", "Enviado?"])
+            ["Número Item", "ID", "Data da Venda", "Produto", "Valor da Venda", "Modo de Pagamento", "Data de Pagamento",
+             "Data de Envio", "Código de Rastreio", "Enviado?"])
         self.table_compras.setSelectionBehavior(QTableWidget.SelectRows)
         self.table_compras.setEditTriggers(QTableWidget.NoEditTriggers)
 
@@ -55,7 +54,7 @@ class ClientWindow(QWidget):
                             QWidget {
                                 background-color: #f0f0f0;
                             }
-                            
+
                             QHeaderView::section {
                                 background-color: #f0f0f0; 
                                 color: black; 
@@ -76,18 +75,21 @@ class ClientWindow(QWidget):
                         """)
 
     def load_compras(self):
-        compras = buscar_compras(self.client_id)
-        print(f"Compras carregadas: {compras}")
-        self.table_compras.setRowCount(len(compras))
-        for row_idx, compra in enumerate(compras):
-            for col_idx, value in enumerate(compra[:-1]):
-                item = QTableWidgetItem(str(value))
-                self.table_compras.setItem(row_idx, col_idx, item)
+        try:
+            compras = buscar_compras(self.client_id)
+            print(f"Compras carregadas: {compras}")
+            self.table_compras.setRowCount(len(compras))
+            for row_idx, compra in enumerate(compras):
+                for col_idx, value in enumerate(compra[:-1]):
+                    item = QTableWidgetItem(str(value))
+                    self.table_compras.setItem(row_idx, col_idx, item)
 
-            enviado_checkbox = QTableWidgetItem()
-            enviado_checkbox.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
-            enviado_checkbox.setCheckState(Qt.Checked if compra[-1] else Qt.Unchecked)
-            self.table_compras.setItem(row_idx, len(compra) - 1, enviado_checkbox)
+                enviado_checkbox = QTableWidgetItem()
+                enviado_checkbox.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+                enviado_checkbox.setCheckState(Qt.Checked if compra[-1] else Qt.Unchecked)
+                self.table_compras.setItem(row_idx, len(compra) - 1, enviado_checkbox)
+        except Exception as e:
+            print(f"Erro ao carregar compras: {e}")
 
     def adicionar_compra(self):
         dialog = CompraDialog(self, self.client_id)
@@ -97,19 +99,38 @@ class ClientWindow(QWidget):
     def editar_compra(self):
         selected_row = self.table_compras.currentRow()
         if selected_row != -1:
-            compra_id_item = self.table_compras.item(selected_row, 0)  # Coluna 1 é o ID
+            compra_id_item = self.table_compras.item(selected_row, 0)  # Ajustado para a coluna de ID
             if compra_id_item:
                 compra_id = compra_id_item.text()
                 print(f"ID da compra selecionada: {compra_id}")
-                compra_data = buscar_compras(self.client_id, compra_id)
-                print(f"Dados da compra: {compra_data}")
-                if compra_data:
-                    compra_data = compra_data[0]
-                    dialog = CompraDialog(self, self.client_id, compra_data)
-                    if dialog.exec_():
-                        self.load_compras()
-                else:
-                    print(f"Nenhuma compra encontrada com o ID: {compra_id}")
+                try:
+                    compra_data = buscar_compras(self.client_id, compra_id)
+                    print(f"Dados da compra: {compra_data}")
+                    if compra_data:
+                        compra_data = compra_data[0]
+                        # Criação do diálogo para edição da compra
+                        dialog = CompraDialog(self, self.client_id, compra_data)
+                        if dialog.exec_():
+                            # Captura os dados atualizados do diálogo
+                            dados_atualizados = dialog.get_dados_compra()
+                            # Atualização da compra no banco de dados
+                            editar_compra(
+                                compra_id,
+                                dados_atualizados['data_venda'],
+                                dados_atualizados['produto'],
+                                dados_atualizados['valor_venda'],
+                                dados_atualizados['modo_pagamento'],
+                                dados_atualizados['data_pagamento'],
+                                dados_atualizados.get('data_envio', None),
+                                dados_atualizados.get('codigo_rastreio', None),
+                                1 if dados_atualizados.get('enviado', False) else 0
+                            )
+                            # Recarregar as compras para refletir as mudanças
+                            self.load_compras()
+                    else:
+                        print(f"Nenhuma compra encontrada com o ID: {compra_id}")
+                except Exception as e:
+                    print(f"Erro ao buscar dados da compra: {e}")
             else:
                 print("O item da célula não contém um ID válido.")
 
@@ -117,8 +138,12 @@ class ClientWindow(QWidget):
         selected_row = self.table_compras.currentRow()
         if selected_row != -1:
             compra_id = self.table_compras.item(selected_row, 0).text()  # Ajustar para pegar o ID correto
-            excluir_compra(compra_id)
-            self.load_compras()
+            try:
+                excluir_compra(compra_id)
+                print(f"Compra com ID {compra_id} excluída com sucesso.")
+                self.load_compras()
+            except Exception as e:
+                print(f"Erro ao excluir compra: {e}")
 
 
 class CompraDialog(QDialog):
@@ -143,15 +168,17 @@ class CompraDialog(QDialog):
         self.checkbox_enviado = QCheckBox()
 
         if self.compra_data:
-            # Certifique-se de que os dados são strings e estão no formato correto
-            self.input_data_venda.setDate(QDate.fromString(str(self.compra_data[2]), 'dd-MM-yyyy'))
-            self.input_produto.setText(self.compra_data[3])
-            self.input_valor_venda.setText(str(self.compra_data[4]))
-            self.input_modo_pagamento.setCurrentText(self.compra_data[5])
-            self.input_data_pagamento.setDate(QDate.fromString(str(self.compra_data[6]), 'dd-MM-yyyy'))
-            self.input_data_envio.setDate(QDate.fromString(str(self.compra_data[7]), 'dd-MM-yyyy'))
-            self.input_codigo_rastreio.setText(self.compra_data[8])
-            self.checkbox_enviado.setChecked(bool(self.compra_data[9]))  # Verifica o valor da coluna "Enviado?"
+            try:
+                self.input_data_venda.setDate(QDate.fromString(str(self.compra_data[2]), 'dd-MM-yyyy'))
+                self.input_produto.setText(self.compra_data[3])
+                self.input_valor_venda.setText(str(self.compra_data[4]))
+                self.input_modo_pagamento.setCurrentText(self.compra_data[5])
+                self.input_data_pagamento.setDate(QDate.fromString(str(self.compra_data[6]), 'dd-MM-yyyy'))
+                self.input_data_envio.setDate(QDate.fromString(str(self.compra_data[7]), 'dd-MM-yyyy'))
+                self.input_codigo_rastreio.setText(self.compra_data[8])
+                self.checkbox_enviado.setChecked(bool(self.compra_data[9]))  # Verifica o valor da coluna "Enviado?"
+            except Exception as e:
+                print(f"Erro ao carregar dados da compra: {e}")
 
         layout.addRow("Data da Venda:", self.input_data_venda)
         layout.addRow("Produto:", self.input_produto)
@@ -168,24 +195,41 @@ class CompraDialog(QDialog):
 
         self.setLayout(layout)
 
-    def save_compra(self):
-        data_venda = self.input_data_venda.date().toString('dd-MM-yyyy')
-        produto = self.input_produto.text()
-        valor_venda = float(self.input_valor_venda.text()).replace(',','.') #substituir vírgula por .
-        modo_pagamento = self.input_modo_pagamento.currentText()
-        data_pagamento = self.input_data_pagamento.date().toString('dd-MM-yyyy')
-        data_envio = self.input_data_envio.date().toString('dd-MM-yyyy')
-        codigo_rastreio = self.input_codigo_rastreio.text()
-        enviado = self.checkbox_enviado.isChecked()
+    def get_dados_compra(self):
+        return {
+            'data_venda': self.input_data_venda.date().toString('dd-MM-yyyy'),
+            'produto': self.input_produto.text(),
+            'valor_venda': float(self.input_valor_venda.text().replace(',', '.')) if self.input_valor_venda.text() else 0.0,
+            'modo_pagamento': self.input_modo_pagamento.currentText(),
+            'data_pagamento': self.input_data_pagamento.date().toString('dd-MM-yyyy'),
+            'data_envio': self.input_data_envio.date().toString('dd-MM-yyyy') if self.input_data_envio.date() != QDate.currentDate() else None,
+            'codigo_rastreio': self.input_codigo_rastreio.text(),
+            'enviado': self.checkbox_enviado.isChecked()
+        }
 
+    def save_compra(self):
         try:
+            dados_compra = self.get_dados_compra()
+            print(f"Salvando compra: {dados_compra}")
             if self.compra_data:
-                editar_compra(self.compra_data[0], self.client_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio,
-                              codigo_rastreio, enviado)
+                editar_compra(
+                    self.compra_data[1],  # ID da compra
+                    dados_compra['data_venda'],
+                    dados_compra['produto'],
+                    dados_compra['valor_venda'],
+                    dados_compra['modo_pagamento'],
+                    dados_compra['data_pagamento'],
+                    dados_compra.get('data_envio', None),
+                    dados_compra.get('codigo_rastreio', None),
+                    1 if dados_compra.get('enviado', False) else 0
+                )
             else:
-                registrar_compra(self.client_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio, codigo_rastreio, enviado)
+                registrar_compra(self.client_id, **dados_compra)
 
             self.accept()
+        except ValueError as ve:
+            print(f"Erro: valor da venda inválido '{dados_compra['valor_venda']}'. Detalhes: {ve}")
+            # Adicionar uma mensagem de erro na interface se desejado
         except Exception as e:
             print(f"Erro ao salvar compra: {e}")
 
