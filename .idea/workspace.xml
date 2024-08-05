@@ -4,8 +4,151 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5d1f228-5331-481a-a56e-6cb1ce7f5fe0" name="Changes" comment="Modificações de arquivos e simplificação">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="b5d1f228-5331-481a-a56e-6cb1ce7f5fe0" name="Changes" comment="Modificações de arquivos e simplificação do projeto em versão final de teste.">
+      <change beforePath="$PROJECT_DIR$/build/main/Analysis-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/COLLECT-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/EXE-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/PKG-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/PYZ-00.pyz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/PYZ-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/Sistema LL.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/Sistema LL.pkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/base_library.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/warn-main.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/xref-main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/Sistema LL.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/MSVCP140.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/MSVCP140_1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5DBus.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5Gui.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5Network.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5Qml.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5QmlModels.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5Quick.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5Svg.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5WebSockets.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5Widgets.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/VCRUNTIME140.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/VCRUNTIME140_1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/d3dcompiler_47.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/libEGL.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/libGLESv2.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/opengl32sw.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/generic/qtuiotouchplugin.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/iconengines/qsvgicon.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qgif.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qicns.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qico.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qjpeg.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qsvg.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qtga.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qtiff.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qwbmp.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qwebp.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/platforms/qminimal.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/platforms/qoffscreen.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/platforms/qwebgl.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/platforms/qwindows.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/platformthemes/qxdgdesktopportal.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/styles/qwindowsvistastyle.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_ar.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_bg.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_ca.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_cs.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_da.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_de.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_en.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_es.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_fa.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_fi.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_fr.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_gd.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_gl.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_he.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_ar.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_bg.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_ca.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_cs.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_da.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_de.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_en.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_es.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_fr.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_gl.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_hu.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_it.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_ja.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_ko.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_pl.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_ru.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_sk.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_sl.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_tr.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_uk.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_zh_CN.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_zh_TW.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_hu.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_it.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_ja.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_ko.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_lt.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_lv.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_pl.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_pt.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_ru.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_sk.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_sl.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_sv.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_tr.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_uk.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_zh_CN.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_zh_TW.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_ar.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_bg.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_ca.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_cs.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_da.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_de.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_en.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_es.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_fi.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_fr.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_gd.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_he.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_hu.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_it.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_ja.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_ko.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_lv.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_pl.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_ru.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_sk.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_tr.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_uk.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_zh_TW.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/QtCore.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/QtGui.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/QtWidgets.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/sip.cp311-win_amd64.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/VCRUNTIME140.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/VCRUNTIME140_1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/_bz2.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/_decimal.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/_hashlib.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/_lzma.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/_socket.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/_sqlite3.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/base_library.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/libcrypto-1_1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/logos/logoLL.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/python3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/python311.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/select.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/sqlite3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/unicodedata.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/clientes.db" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +359,7 @@
       <option name="presentableId" value="Default" />
       <updated>1722641580769</updated>
       <workItem from="1722641582252" duration="7196000" />
-      <workItem from="1722649248768" duration="45967000" />
+      <workItem from="1722649248768" duration="46289000" />
     </task>
     <task id="LOCAL-00001" summary="Upload do atual estágio do projeto">
       <option name="closed" value="true" />
@@ -242,7 +385,23 @@
       <option name="project" value="LOCAL" />
       <updated>1722810451639</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Modificações de arquivos e simplificação do projeto em versão final de teste.">
+      <option name="closed" value="true" />
+      <created>1722873021069</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1722873021072</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Modificações de arquivos e simplificação do projeto em versão final de teste.">
+      <option name="closed" value="true" />
+      <created>1722873076305</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1722873076305</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,7 +411,8 @@
     <MESSAGE value="Upload do atual estágio do projeto" />
     <MESSAGE value="Atualizações de arquivos, estágio final" />
     <MESSAGE value="Modificações de arquivos e simplificação" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modificações de arquivos e simplificação" />
+    <MESSAGE value="Modificações de arquivos e simplificação do projeto em versão final de teste." />
+    <option name="LAST_COMMIT_MESSAGE" value="Modificações de arquivos e simplificação do projeto em versão final de teste." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
