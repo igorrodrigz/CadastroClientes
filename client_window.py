@@ -1,20 +1,28 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QTableWidget, QTableWidgetItem, \
-    QPushButton, QDialog, QFormLayout, QLineEdit, QCheckBox, QComboBox, QDateEdit
+    QPushButton, QDialog, QFormLayout, QLineEdit, QCheckBox, QComboBox, QLabel
 from PyQt5.QtCore import Qt, QDate
-from lojaDB import buscar_compras, registrar_compra, editar_compra, excluir_compra
+from lojaDB import buscar_compras, registrar_compra, editar_compra, excluir_compra, buscar_cliente_por_id
 from utils import criar_seletor_data
 
 class ClientWindow(QWidget):
     def __init__(self, client_id):
         super().__init__()
         self.client_id = client_id
+        self.client_name = self.get_client_name()
         self.setWindowTitle('Detalhes do Cliente')
         self.setGeometry(100, 100, 900, 600)
         self.initUI()
 
     def initUI(self):
         main_layout = QVBoxLayout()
+
+        # Labels para ID e Nome do Cliente
+        self.label_id = QLabel(f"ID do Cliente: {self.client_id}")
+        self.label_nome = QLabel(f"Nome do Cliente: {self.client_name}")
+
+        main_layout.addWidget(self.label_id)
+        main_layout.addWidget(self.label_nome)
 
         # Lista de compras
         self.table_compras = QTableWidget()
@@ -73,6 +81,12 @@ class ClientWindow(QWidget):
                                 background-color: #465184;
                             }
                         """)
+
+    def get_client_name(self):
+        client_data = buscar_cliente_por_id(self.client_id)
+        if client_data:
+            return client_data[1]  # Assume que o nome está na segunda posição
+        return "Desconhecido"
 
     def load_compras(self):
         try:
@@ -189,9 +203,17 @@ class CompraDialog(QDialog):
         layout.addRow("Código de Rastreio:", self.input_codigo_rastreio)
         layout.addRow("Enviado?", self.checkbox_enviado)
 
-        self.button_save = QPushButton("Salvar")
-        self.button_save.clicked.connect(self.save_compra)
-        layout.addWidget(self.button_save)
+        button_layout = QHBoxLayout()
+        self.button_ok = QPushButton("OK")
+        self.button_cancel = QPushButton("Cancelar")
+
+        self.button_ok.clicked.connect(self.accept)
+        self.button_cancel.clicked.connect(self.reject)
+
+        button_layout.addWidget(self.button_ok)
+        button_layout.addWidget(self.button_cancel)
+
+        layout.addRow(button_layout)
 
         self.setLayout(layout)
 
@@ -199,43 +221,17 @@ class CompraDialog(QDialog):
         return {
             'data_venda': self.input_data_venda.date().toString('dd-MM-yyyy'),
             'produto': self.input_produto.text(),
-            'valor_venda': float(self.input_valor_venda.text().replace(',', '.')) if self.input_valor_venda.text() else 0.0,
+            'valor_venda': self.input_valor_venda.text(),
             'modo_pagamento': self.input_modo_pagamento.currentText(),
             'data_pagamento': self.input_data_pagamento.date().toString('dd-MM-yyyy'),
-            'data_envio': self.input_data_envio.date().toString('dd-MM-yyyy') if self.input_data_envio.date() != QDate.currentDate() else None,
+            'data_envio': self.input_data_envio.date().toString('dd-MM-yyyy') if self.input_data_envio.date().isValid() else None,
             'codigo_rastreio': self.input_codigo_rastreio.text(),
             'enviado': self.checkbox_enviado.isChecked()
         }
 
-    def save_compra(self):
-        try:
-            dados_compra = self.get_dados_compra()
-            print(f"Salvando compra: {dados_compra}")
-            if self.compra_data:
-                editar_compra(
-                    self.compra_data[1],  # ID da compra
-                    dados_compra['data_venda'],
-                    dados_compra['produto'],
-                    dados_compra['valor_venda'],
-                    dados_compra['modo_pagamento'],
-                    dados_compra['data_pagamento'],
-                    dados_compra.get('data_envio', None),
-                    dados_compra.get('codigo_rastreio', None),
-                    1 if dados_compra.get('enviado', False) else 0
-                )
-            else:
-                registrar_compra(self.client_id, **dados_compra)
-
-            self.accept()
-        except ValueError as ve:
-            print(f"Erro: valor da venda inválido '{dados_compra['valor_venda']}'. Detalhes: {ve}")
-            # Adicionar uma mensagem de erro na interface se desejado
-        except Exception as e:
-            print(f"Erro ao salvar compra: {e}")
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = QApplication(sys.argv)
-    client_window = ClientWindow(1)
+    client_id = 1  # Defina o ID do cliente
+    client_window = ClientWindow(client_id)
     client_window.show()
     sys.exit(app.exec_())

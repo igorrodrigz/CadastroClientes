@@ -5,150 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5d1f228-5331-481a-a56e-6cb1ce7f5fe0" name="Changes" comment="Modificações de arquivos e simplificação do projeto em versão final de teste.">
-      <change beforePath="$PROJECT_DIR$/build/main/Analysis-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/COLLECT-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/EXE-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/PKG-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/PYZ-00.pyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/PYZ-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/Sistema LL.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/Sistema LL.pkg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/base_library.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/warn-main.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/xref-main.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/Sistema LL.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/MSVCP140.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/MSVCP140_1.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5Core.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5DBus.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5Gui.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5Network.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5Qml.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5QmlModels.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5Quick.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5Svg.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5WebSockets.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/Qt5Widgets.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/VCRUNTIME140.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/VCRUNTIME140_1.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/d3dcompiler_47.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/libEGL.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/libGLESv2.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/bin/opengl32sw.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/generic/qtuiotouchplugin.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/iconengines/qsvgicon.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qgif.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qicns.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qico.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qjpeg.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qsvg.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qtga.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qtiff.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qwbmp.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/imageformats/qwebp.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/platforms/qminimal.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/platforms/qoffscreen.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/platforms/qwebgl.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/platforms/qwindows.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/platformthemes/qxdgdesktopportal.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/plugins/styles/qwindowsvistastyle.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_ar.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_bg.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_ca.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_cs.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_da.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_de.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_en.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_es.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_fa.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_fi.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_fr.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_gd.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_gl.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_he.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_ar.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_bg.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_ca.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_cs.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_da.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_de.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_en.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_es.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_fr.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_gl.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_hu.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_it.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_ja.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_ko.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_pl.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_ru.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_sk.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_sl.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_tr.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_uk.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_zh_CN.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_help_zh_TW.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_hu.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_it.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_ja.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_ko.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_lt.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_lv.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_pl.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_pt.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_ru.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_sk.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_sl.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_sv.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_tr.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_uk.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_zh_CN.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qt_zh_TW.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_ar.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_bg.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_ca.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_cs.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_da.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_de.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_en.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_es.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_fi.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_fr.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_gd.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_he.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_hu.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_it.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_ja.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_ko.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_lv.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_pl.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_ru.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_sk.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_tr.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_uk.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/Qt5/translations/qtbase_zh_TW.qm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/QtCore.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/QtGui.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/QtWidgets.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/PyQt5/sip.cp311-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/VCRUNTIME140.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/VCRUNTIME140_1.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/_bz2.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/_decimal.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/_hashlib.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/_lzma.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/_socket.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/_sqlite3.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/base_library.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/libcrypto-1_1.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/logos/logoLL.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/python3.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/python311.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/select.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/sqlite3.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/_internal/unicodedata.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Sistema LL/clientes.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/client_window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clientes.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lojaDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/lojaDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testesDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/testesDB.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,18 +27,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "igorrodrigz"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;igorrodrigz&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/igorrodrigz/CadastroClientes.git",
-    "accountId": "7aab23eb-7fce-4246-a366-d07ad69396dd"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/igorrodrigz/CadastroClientes.git&quot;,
+    &quot;accountId&quot;: &quot;7aab23eb-7fce-4246-a366-d07ad69396dd&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -197,7 +59,7 @@
     "Python.testesDB.executor": "Run",
     "Python.unico.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "MR",
     "last_opened_file_path": "C:/Users/morei/PycharmProjects/CadastroClientes/logos",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -426,13 +288,23 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CadastroClientes$login.coverage" NAME="login Coverage Results" MODIFIED="1722719145084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CadastroClientes$lojaDB.coverage" NAME="lojaDB Coverage Results" MODIFIED="1722799272892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CadastroClientes$finance_window.coverage" NAME="finance_window Coverage Results" MODIFIED="1725258873356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CadastroClientes$.coverage" NAME=" Coverage Results" MODIFIED="1722793942648" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CadastroClientes$testesDB.coverage" NAME="testesDB Coverage Results" MODIFIED="1722807214508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CadastroClientes$testesDB.coverage" NAME="testesDB Coverage Results" MODIFIED="1725252692598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CadastroClientes$unico.coverage" NAME="unico Coverage Results" MODIFIED="1722803762229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/client_window_py$submain.coverage" NAME="submain Coverage Results" MODIFIED="1726070368221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/client_window_py$main2.coverage" NAME="main2 Coverage Results" MODIFIED="1726489263991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CadastroClientes$main2.coverage" NAME="main2 Coverage Results" MODIFIED="1725256159042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CadastroClientes$client_window.coverage" NAME="client_window Coverage Results" MODIFIED="1725476167720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CadastroClientes$main.coverage" NAME="main Coverage Results" MODIFIED="1725476183719" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/client_window_py$main.coverage" NAME="main Coverage Results" MODIFIED="1726546110492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CadastroClientes$login.coverage" NAME="login Coverage Results" MODIFIED="1722719145084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CadastroClientes$lojaDB.coverage" NAME="lojaDB Coverage Results" MODIFIED="1725258858839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/client_window_py$.coverage" NAME=" Coverage Results" MODIFIED="1726540479744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/client_window_py$client_window.coverage" NAME="client_window Coverage Results" MODIFIED="1726347209661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CadastroClientes$novounico.coverage" NAME="novounico Coverage Results" MODIFIED="1722805582901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CadastroClientes$client_window.coverage" NAME="client_window Coverage Results" MODIFIED="1722714831479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CadastroClientes$main.coverage" NAME="main Coverage Results" MODIFIED="1722810281525" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/client_window_py$testesDB.coverage" NAME="testesDB Coverage Results" MODIFIED="1726543095528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/client_window_py$lojaDB.coverage" NAME="lojaDB Coverage Results" MODIFIED="1726541356866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CadastroClientes$submain.coverage" NAME="submain Coverage Results" MODIFIED="1725256914108" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
