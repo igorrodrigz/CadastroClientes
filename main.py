@@ -1,23 +1,32 @@
 import sys
-from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout,
                              QTableWidget, QTableWidgetItem, QMessageBox, QDialog, QFormLayout, QTabWidget, QFrame)
 from PyQt5.QtCore import Qt
-from lojaDB import (init_db, cadastrar_cliente, editar_cliente, excluir_cliente, buscar_clientes,
+from lojaDB import init_db
+from lojaDB import (cadastrar_cliente, editar_cliente, excluir_cliente, buscar_clientes,
                     buscar_cliente_por_id, buscar_clientes_com_itens_nao_enviados)
 from client_window import ClientWindow
 import random
 
+def carregar_estilos(app, caminho_qss):
+    """Carrega os estilos do arquivo QSS no aplicativo."""
+    try:
+        with open(caminho_qss, "r") as arquivo_estilos:
+            app.setStyleSheet(arquivo_estilos.read())
+    except FileNotFoundError:
+        QMessageBox.warning(None, "Aviso", f"Arquivo de estilos não encontrado: {caminho_qss}")
 
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle('Sistema de Controle de Clientes - LL Cutelaria')
+        self.setWindowTitle('Sistema de Controle de Clientes - Santa Marcia Pilchas e LL Cutelaria')
         self.setGeometry(100, 100, 900, 600)
         self.initUI()
 
+
     def initUI(self):
         main_layout = QVBoxLayout()
+        init_db()
 
         # Adicionar uma aba para clientes com itens não enviados
         self.tabs = QTabWidget()
@@ -89,7 +98,8 @@ class MainWindow(QWidget):
             "Transforme seus desafios em oportunidades.",
             "Acreditar em si mesmo é o primeiro passo para o sucesso.",
             "Cada dia é uma nova chance para brilhar.",
-            "O sucesso é a soma de pequenos esforços repetidos dia após dia."
+            "O sucesso é a soma de pequenos esforços repetidos dia após dia.",
+            "A diferença entre um sonho e um objetivo é uma data.",
         ]
         self.motivational_label = QLabel(self.get_random_phrase())
         self.footer_layout.addWidget(self.motivational_label, alignment=Qt.AlignCenter)
@@ -126,6 +136,7 @@ class MainWindow(QWidget):
 
     def buscar_cliente(self):
         search_term = self.search_input.text()
+        self.load_itens_nao_enviados()
         clientes = buscar_clientes(search_term)
         self.table_clientes.setRowCount(len(clientes))
         for row_idx, cliente in enumerate(clientes):
@@ -154,8 +165,26 @@ class MainWindow(QWidget):
         selected_row = self.table_clientes.currentRow()
         if selected_row != -1:
             client_id = int(self.table_clientes.item(selected_row, 0).text())
-            excluir_cliente(client_id)
-            self.load_clientes()
+
+            #Confirma excluir cliente
+            msg_box = QMessageBox()
+            msg_box.setIcon(QMessageBox.Warning)
+            msg_box.setText("Tem certeza que deseja apagar este cliente?")
+            msg_box.setInformativeText(f"O cliente com o ID {client_id} será permanentemente excluido.")
+            msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            msg_box.setDefaultButton(QMessageBox.No)
+            response = msg_box.exec_()
+            if response == QMessageBox.Yes:
+                try:
+                    excluir_cliente(client_id)
+                    print(f"Cliente com id {client_id} excluido com sucesso.")
+                    self.load_clientes()
+                except Exception as e:
+                    print(f"Erro ao excluir cliente: {e}")
+            else:
+                print("Exclusão do cliente cancelada.")
+        else:
+            print("Nenhum cliente selecionado para exclusão.")
 
     def abrir_cliente(self):
         selected_row = self.table_clientes.currentRow()
@@ -222,6 +251,7 @@ class ClientDialog(QDialog):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    carregar_estilos(app, 'styles.qss')
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())

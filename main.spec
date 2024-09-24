@@ -8,7 +8,7 @@ a = Analysis(
     pathex=['.'],
     binaries=[],
     datas=[
-        ('logos/logoLL.png', 'logos')
+        ('logos/iconBook.ico', 'logos')
     ],
     hiddenimports=[
         'PyQt5',
@@ -39,8 +39,8 @@ exe = EXE(
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=True,  # False para não mostrar o console
-    icon='logos/icoLL.ico'  # Se houver um ícone
+    console=False,  # False para não mostrar o console
+    icon='logos/iconBook.ico'  # Se houver um ícone
 )
 
 coll = COLLECT(

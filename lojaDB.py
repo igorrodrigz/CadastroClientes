@@ -137,21 +137,31 @@ def buscar_clientes_com_itens_nao_enviados():
     return clientes
 
 
-def registrar_compra(cliente_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio=None, codigo_rastreio=None, enviado=0):
-    """Registra uma nova compra para um cliente no banco de dados."""
+def registrar_compra(cliente_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento=None, data_envio=None, codigo_rastreio=None, enviado=0):
+    """Registra uma nova compra no banco de dados."""
     try:
         conn = sqlite3.connect('clientes.db')
         c = conn.cursor()
+
+        # Verifique os dados que estão sendo inseridos
+        print(f"Registrando nova compra para cliente_id {cliente_id}:")
+        print(f"data_venda: {data_venda}, produto: {produto}, valor_venda: {valor_venda}, modo_pagamento: {modo_pagamento}")
+        print(f"data_pagamento: {data_pagamento}, data_envio: {data_envio}, codigo_rastreio: {codigo_rastreio}, enviado: {enviado}")
+
+        # Comando SQL para inserir a compra
         c.execute('''
-            INSERT INTO compras (cliente_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio, codigo_rastreio, enviado) 
+            INSERT INTO compras (cliente_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio, codigo_rastreio, enviado)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ''', (cliente_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio, codigo_rastreio, int(enviado)))
+        ''', (cliente_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio, codigo_rastreio, enviado))
+
+        # Commitar a transação para salvar no banco
         conn.commit()
         print("Compra registrada com sucesso.")
     except Exception as e:
         print(f"Erro ao registrar compra: {e}")
     finally:
         conn.close()
+
 
 def editar_compra(compra_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio=None, codigo_rastreio=None, enviado=0):
     """Edita uma compra existente no banco de dados."""
