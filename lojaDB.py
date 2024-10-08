@@ -5,17 +5,18 @@ def init_db():
     try:
         conn = sqlite3.connect('clientes.db')
         c = conn.cursor()
-        # Criação das tabelas
+        # Criação ou atualização da tabela clientes
         c.execute('''
             CREATE TABLE IF NOT EXISTS clientes (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 nome TEXT NOT NULL,
-                cpf TEXT NOT NULL,
-                telefone TEXT NOT NULL,
+                proprietario TEXT NOT NULL,
+                raca TEXT NOT NULL,
                 endereco TEXT NOT NULL,
-                cep TEXT NOT NULL
+                Telefone TEXT NOT NULL
             )
         ''')
+        # Criação da tabela compras
         c.execute('''
             CREATE TABLE IF NOT EXISTS compras (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -23,11 +24,7 @@ def init_db():
                 data_venda TEXT NOT NULL,
                 produto TEXT NOT NULL,
                 valor_venda REAL NOT NULL,
-                modo_pagamento TEXT NOT NULL,
-                data_pagamento TEXT NOT NULL,
-                data_envio TEXT,
-                codigo_rastreio TEXT,
-                enviado INTEGER DEFAULT 0,
+                notas TEXT,
                 FOREIGN KEY(cliente_id) REFERENCES clientes(id)
             )
         ''')
@@ -38,14 +35,14 @@ def init_db():
     finally:
         conn.close()
 
-def cadastrar_cliente(nome, cpf, telefone, endereco, cep):
+def cadastrar_cliente(nome, proprietario, raca, endereco, telefone):
     """Cadastra um novo cliente no banco de dados."""
     try:
         conn = sqlite3.connect('clientes.db')
         c = conn.cursor()
         c.execute('''
-            INSERT INTO clientes (nome, cpf, telefone, endereco, cep) VALUES (?, ?, ?, ?, ?)
-        ''', (nome, cpf, telefone, endereco, cep))
+            INSERT INTO clientes (nome, proprietario, raca, endereco, telefone) VALUES (?, ?, ?, ?, ?)
+        ''', (nome, proprietario, raca, endereco, telefone))
         conn.commit()
         print("Cliente cadastrado com sucesso.")
     except Exception as e:
@@ -53,14 +50,14 @@ def cadastrar_cliente(nome, cpf, telefone, endereco, cep):
     finally:
         conn.close()
 
-def editar_cliente(client_id, nome, cpf, telefone, endereco, cep):
+def editar_cliente(client_id, nome, proprietario, raca, endereco, telefone):
     """Edita os dados de um cliente existente no banco de dados."""
     try:
         conn = sqlite3.connect('clientes.db')
         c = conn.cursor()
         c.execute('''
-            UPDATE clientes SET nome = ?, cpf = ?, telefone = ?, endereco = ?, cep = ? WHERE id = ?
-        ''', (nome, cpf, telefone, endereco, cep, client_id))
+            UPDATE clientes SET nome = ?, proprietario = ?, raca = ?, endereco = ?, telefone = ? WHERE id = ?
+        ''', (nome, proprietario, raca, endereco, telefone, client_id))
         conn.commit()
         print("Cliente editado com sucesso.")
     except Exception as e:
@@ -89,8 +86,8 @@ def buscar_clientes(search_term=None):
         c = conn.cursor()
         if search_term:
             c.execute('''
-                SELECT * FROM clientes WHERE nome LIKE ? OR cpf LIKE ?
-            ''', (f'%{search_term}%', f'%{search_term}%'))
+                SELECT * FROM clientes WHERE nome LIKE ? OR proprietario LIKE ? OR telefone LIKE ?
+            ''', (f'%{search_term}%', f'%{search_term}%', f'%{search_term}%'))
         else:
             c.execute('SELECT * FROM clientes')
         clientes = c.fetchall()
@@ -115,15 +112,43 @@ def buscar_cliente_por_id(client_id):
         conn.close()
     return cliente
 
-def registrar_compra(cliente_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio=None, codigo_rastreio=None, enviado=0):
-    """Registra uma nova compra para um cliente no banco de dados."""
+def buscar_clientes_com_itens_nao_enviados():
+    """Busca clientes que possuem itens (ou compras) não enviados."""
     try:
         conn = sqlite3.connect('clientes.db')
         c = conn.cursor()
         c.execute('''
-            INSERT INTO compras (cliente_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio, codigo_rastreio, enviado) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ''', (cliente_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio, codigo_rastreio, int(enviado)))
+            SELECT DISTINCT cl.id, cl.nome, cl.proprietario, cl.raca, cl.endereco, cl.telefone
+            FROM clientes cl
+            JOIN compras co ON cl.id = co.cliente_id
+            WHERE co.enviado = 0
+        ''')
+        clientes = c.fetchall()
+    except Exception as e:
+        print(f"Erro ao buscar clientes com itens não enviados: {e}")
+        clientes = []
+    finally:
+        conn.close()
+    return clientes
+
+
+def registrar_compra(cliente_id, data_venda, produto, valor_venda, notas=None):
+    """Registra uma nova compra no banco de dados."""
+    try:
+        conn = sqlite3.connect('clientes.db')
+        c = conn.cursor()
+
+        # Verifique os dados que estão sendo inseridos
+        print(f"Registrando nova compra para cliente_id {cliente_id}:")
+        print(f"data_venda: {data_venda}, produto: {produto}, valor_venda: {valor_venda}, notas: {notas}")
+
+        # Comando SQL para inserir a compra
+        c.execute('''
+            INSERT INTO compras (cliente_id, data_venda, produto, valor_venda, notas)
+            VALUES (?, ?, ?, ?, ?)
+        ''', (cliente_id, data_venda, produto, valor_venda, notas))
+
+        # Commitar a transação para salvar no banco
         conn.commit()
         print("Compra registrada com sucesso.")
     except Exception as e:
@@ -131,16 +156,17 @@ def registrar_compra(cliente_id, data_venda, produto, valor_venda, modo_pagament
     finally:
         conn.close()
 
-def editar_compra(compra_id, data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio=None, codigo_rastreio=None, enviado=0):
+
+def editar_compra(compra_id, data_venda, produto, valor_venda, notas=None):
     """Edita uma compra existente no banco de dados."""
     try:
         conn = sqlite3.connect('clientes.db')
         c = conn.cursor()
         c.execute('''
             UPDATE compras
-            SET data_venda = ?, produto = ?, valor_venda = ?, modo_pagamento = ?, data_pagamento = ?, data_envio = ?, codigo_rastreio = ?, enviado = ?
+            SET data_venda = ?, produto = ?, valor_venda = ?, notas = ?
             WHERE id = ?
-        ''', (data_venda, produto, valor_venda, modo_pagamento, data_pagamento, data_envio, codigo_rastreio, int(enviado), compra_id))
+        ''', (data_venda, produto, valor_venda, notas, compra_id))
         conn.commit()
         print("Compra editada com sucesso.")
     except Exception as e:
