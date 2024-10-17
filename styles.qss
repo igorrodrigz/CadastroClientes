@@ -1,0 +1,19 @@
+/* Estilos gerais */
+QWidget {
+    background-color: #fafafa; /* Quase branco */
+    color: #6c6c6c; /* Cinza escuro */
+    font-family: "Verdana", sans-serif;
+}
+
+/* Botões */
+QPushButton {
+    background-color: #0c0b0b; /* Preto */
+    font-weight: bold;
+    color: #FFFFFF;
+    border-radius: 12px;
+    padding: 8px 10px;
+}
+
+QPushButton:hover {
+    background-color: #707070; /* Cinza */
+}

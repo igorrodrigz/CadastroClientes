@@ -1,89 +1,122 @@
 import sys
-
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout, QTableWidget, QTableWidgetItem, QMessageBox, QDialog, QFormLayout
+from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout,
+                             QTableWidget, QTableWidgetItem, QMessageBox, QDialog, QFormLayout, QTabWidget, QFrame)
 from PyQt5.QtCore import Qt
-from lojaDB import init_db, cadastrar_cliente, editar_cliente, excluir_cliente, buscar_clientes, buscar_cliente_por_id
+from lojaDB import init_db
+from lojaDB import (cadastrar_cliente, editar_cliente, excluir_cliente, buscar_clientes,
+                    buscar_cliente_por_id, buscar_clientes_com_itens_nao_enviados)
 from client_window import ClientWindow
+import random
+
+def carregar_estilos(app, caminho_qss):
+    """Carrega os estilos do arquivo QSS no aplicativo."""
+    try:
+        with open(caminho_qss, "r") as arquivo_estilos:
+            app.setStyleSheet(arquivo_estilos.read())
+    except FileNotFoundError:
+        QMessageBox.warning(None, "Aviso", f"Arquivo de estilos não encontrado: {caminho_qss}")
 
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle('Sistema de Controle de Clientes - LL Cutelaria')
+        self.setWindowTitle('Sistema de Controle de Expedições - FC Facas Artesanais')
         self.setGeometry(100, 100, 900, 600)
         self.initUI()
 
+
     def initUI(self):
         main_layout = QVBoxLayout()
+        init_db()
 
-        # Logo na barra
-        self.setWindowIcon(QIcon('logos/logoLL.png'))
+        # Adicionar uma aba para clientes com itens não enviados
+        self.tabs = QTabWidget()
+        self.tab_clientes = QWidget()
+        self.tab_itens_nao_enviados = QWidget()
+        self.tabs.addTab(self.tab_clientes, "Clientes")
+        self.tabs.addTab(self.tab_itens_nao_enviados, "Itens Não Enviados")
 
-        # Barra de busca
-        search_layout = QHBoxLayout()
+        # Configurar a aba de clientes
+        self.tab_clientes_layout = QVBoxLayout()
+        self.search_layout = QHBoxLayout()
         self.search_input = QLineEdit()
         self.search_input.setPlaceholderText("Buscar Cliente")
         self.search_button = QPushButton("Buscar")
         self.search_button.clicked.connect(self.buscar_cliente)
-        search_layout.addWidget(self.search_input)
-        search_layout.addWidget(self.search_button)
+        self.search_layout.addWidget(self.search_input)
+        self.search_layout.addWidget(self.search_button)
 
-        # Lista de clientes
+        self.tab_clientes_layout.addLayout(self.search_layout)
+
         self.table_clientes = QTableWidget()
-        self.table_clientes.setColumnCount(6)
-        self.table_clientes.setHorizontalHeaderLabels(["ID", "Nome", "CPF", "Telefone", "Endereço", "CEP"])
+        self.table_clientes.setColumnCount(7)
+        self.table_clientes.setHorizontalHeaderLabels(["ID", "Nome", "CPF", "Telefone", "Endereço", "CEP", "Cidade"])
         self.table_clientes.setSelectionBehavior(QTableWidget.SelectRows)
         self.table_clientes.setEditTriggers(QTableWidget.NoEditTriggers)
         self.table_clientes.doubleClicked.connect(self.abrir_cliente)
+        self.tab_clientes_layout.addWidget(self.table_clientes)
 
-        # Botões
-        button_layout = QHBoxLayout()
-        self.button_add_cliente = QPushButton("Adicionar Cliente")
-        self.button_edit_cliente = QPushButton("Editar Cliente")
-        self.button_delete_cliente = QPushButton("Excluir Cliente")
-        self.button_acessar_cliente = QPushButton("Acessar Cliente")
+        # Adicionar botões de CRUD
+        self.button_layout = QHBoxLayout()
+        self.btn_adicionar = QPushButton("Novo Cadastro")
+        self.btn_editar = QPushButton("Atualizar Dados")
+        self.btn_excluir = QPushButton("Excluir")
+        self.btn_acessar = QPushButton("Acessar Cadastro")
+        self.btn_adicionar.clicked.connect(self.adicionar_cliente)
+        self.btn_editar.clicked.connect(self.editar_cliente)
+        self.btn_excluir.clicked.connect(self.excluir_cliente)
+        self.btn_acessar.clicked.connect(self.abrir_cliente)
+        self.button_layout.addWidget(self.btn_adicionar)
+        self.button_layout.addWidget(self.btn_editar)
+        self.button_layout.addWidget(self.btn_excluir)
+        self.button_layout.addWidget(self.btn_acessar)
 
-        self.button_add_cliente.clicked.connect(self.adicionar_cliente)
-        self.button_edit_cliente.clicked.connect(self.editar_cliente)
-        self.button_delete_cliente.clicked.connect(self.excluir_cliente)
-        self.button_acessar_cliente.clicked.connect(self.abrir_cliente)
+        self.tab_clientes_layout.addLayout(self.button_layout)
 
-        button_layout.addWidget(self.button_add_cliente)
-        button_layout.addWidget(self.button_edit_cliente)
-        button_layout.addWidget(self.button_delete_cliente)
-        button_layout.addWidget(self.button_acessar_cliente)
+        self.tab_clientes.setLayout(self.tab_clientes_layout)
 
-        main_layout.addLayout(search_layout)
-        main_layout.addWidget(self.table_clientes)
-        main_layout.addLayout(button_layout)
+        # Configurar a aba de itens não enviados
+        self.tab_itens_nao_enviados_layout = QVBoxLayout()
+        self.table_itens_nao_enviados = QTableWidget()
+        self.table_itens_nao_enviados.setColumnCount(7)  # Ajuste o número de colunas conforme necessário
+        self.table_itens_nao_enviados.setHorizontalHeaderLabels(
+            ["ID", "Nome", "CPF", "Telefone", "Endereço", "CEP", "Cidade"])
+        self.table_itens_nao_enviados.setSelectionBehavior(QTableWidget.SelectRows)
+        self.table_itens_nao_enviados.setEditTriggers(QTableWidget.NoEditTriggers)
+        self.tab_itens_nao_enviados_layout.addWidget(self.table_itens_nao_enviados)
+        self.tab_itens_nao_enviados.setLayout(self.tab_itens_nao_enviados_layout)
+
+        self.tabs.setCurrentIndex(0)  # Exibe a aba de clientes por padrão
+        main_layout.addWidget(self.tabs)
+
+        # Frase informativa e botões
+        self.footer_frame = QFrame()
+        self.footer_frame.setFrameShape(QFrame.StyledPanel)
+        self.footer_layout = QVBoxLayout()
+
+        self.motivational_phrases = [
+            "A perseverança é a chave para o sucesso.",
+            "Transforme seus desafios em oportunidades.",
+            "Acreditar em si mesmo é o primeiro passo para o sucesso.",
+            "Cada dia é uma nova chance para brilhar.",
+            "O sucesso é a soma de pequenos esforços repetidos dia após dia.",
+            "A diferença entre um sonho e um objetivo é uma data.",
+        ]
+        self.motivational_label = QLabel(self.get_random_phrase())
+        self.footer_layout.addWidget(self.motivational_label, alignment=Qt.AlignCenter)
+
+        self.footer_signature = QLabel(
+            "Software Exclusivo para FC Facas Artesanais - Desenvolvido por MR Solutions.")
+        self.footer_layout.addWidget(self.footer_signature, alignment=Qt.AlignCenter)
+
+        self.footer_frame.setLayout(self.footer_layout)
+        main_layout.addWidget(self.footer_frame)
 
         self.setLayout(main_layout)
         self.load_clientes()
+        self.load_itens_nao_enviados()
 
-        # Aplicar estilo diretamente
-        self.setStyleSheet("""
-                            QWidget {
-                                background-color: #f0f0f0;
-                            }
-
-                            QHeaderView::section {
-                                background-color: #f0f0f0; 
-                                color: black; 
-                            }
-                            QPushButton {
-                                background-color: #3c4c7d;
-                                color: white;
-                                border-radius: 5px;
-                                padding: 10px;
-                                font-size: 16px;
-                            }
-                            QPushButton:hover {
-                                background-color: #24346c;
-                            }
-                            QPushButton:pressed {
-                                background-color: #465184;
-                            }
-                        """)
+    def get_random_phrase(self):
+        return random.choice(self.motivational_phrases)
 
     def load_clientes(self):
         clientes = buscar_clientes()
@@ -93,8 +126,17 @@ class MainWindow(QWidget):
                 item = QTableWidgetItem(str(value))
                 self.table_clientes.setItem(row_idx, col_idx, item)
 
+    def load_itens_nao_enviados(self):
+        clientes = buscar_clientes_com_itens_nao_enviados()
+        self.table_itens_nao_enviados.setRowCount(len(clientes))
+        for row_idx, cliente in enumerate(clientes):
+            for col_idx, value in enumerate(cliente):
+                item = QTableWidgetItem(str(value))
+                self.table_itens_nao_enviados.setItem(row_idx, col_idx, item)
+
     def buscar_cliente(self):
         search_term = self.search_input.text()
+        self.load_itens_nao_enviados()
         clientes = buscar_clientes(search_term)
         self.table_clientes.setRowCount(len(clientes))
         for row_idx, cliente in enumerate(clientes):
@@ -123,8 +165,26 @@ class MainWindow(QWidget):
         selected_row = self.table_clientes.currentRow()
         if selected_row != -1:
             client_id = int(self.table_clientes.item(selected_row, 0).text())
-            excluir_cliente(client_id)
-            self.load_clientes()
+
+            #Confirma excluir cliente
+            msg_box = QMessageBox()
+            msg_box.setIcon(QMessageBox.Warning)
+            msg_box.setText("Tem certeza que deseja apagar este cliente?")
+            msg_box.setInformativeText(f"O cliente com o ID {client_id} será permanentemente excluido.")
+            msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            msg_box.setDefaultButton(QMessageBox.No)
+            response = msg_box.exec_()
+            if response == QMessageBox.Yes:
+                try:
+                    excluir_cliente(client_id)
+                    print(f"Cliente com id {client_id} excluido com sucesso.")
+                    self.load_clientes()
+                except Exception as e:
+                    print(f"Erro ao excluir cliente: {e}")
+            else:
+                print("Exclusão do cliente cancelada.")
+        else:
+            print("Nenhum cliente selecionado para exclusão.")
 
     def abrir_cliente(self):
         selected_row = self.table_clientes.currentRow()
@@ -132,6 +192,7 @@ class MainWindow(QWidget):
             client_id = int(self.table_clientes.item(selected_row, 0).text())
             self.client_window = ClientWindow(client_id)
             self.client_window.show()
+
 
 class ClientDialog(QDialog):
     def __init__(self, parent=None, client_data=None):
@@ -148,6 +209,7 @@ class ClientDialog(QDialog):
         self.input_telefone = QLineEdit()
         self.input_endereco = QLineEdit()
         self.input_cep = QLineEdit()
+        self.input_cidade = QLineEdit()  # Novo campo para cidade
 
         if self.client_data:
             self.input_nome.setText(self.client_data[1])
@@ -155,12 +217,14 @@ class ClientDialog(QDialog):
             self.input_telefone.setText(self.client_data[3])
             self.input_endereco.setText(self.client_data[4])
             self.input_cep.setText(self.client_data[5])
+            self.input_cidade.setText(self.client_data[6])  # Carregar cidade se estiver editando
 
         layout.addRow("Nome:", self.input_nome)
         layout.addRow("CPF:", self.input_cpf)
         layout.addRow("Telefone:", self.input_telefone)
         layout.addRow("Endereço:", self.input_endereco)
         layout.addRow("CEP:", self.input_cep)
+        layout.addRow("Cidade:", self.input_cidade)  # Adicionar campo cidade
 
         self.button_save = QPushButton("Salvar")
         self.button_save.clicked.connect(self.save_client)
@@ -174,18 +238,20 @@ class ClientDialog(QDialog):
         telefone = self.input_telefone.text()
         endereco = self.input_endereco.text()
         cep = self.input_cep.text()
+        cidade = self.input_cidade.text()  # Adicionar cidade
 
         if self.client_data:
-            editar_cliente(self.client_data[0], nome, cpf, telefone, endereco, cep)
+            client_id = self.client_data[0]
+            editar_cliente(client_id, nome, cpf, telefone, endereco, cep, cidade)  # Passar cidade
         else:
-            cadastrar_cliente(nome, cpf, telefone, endereco, cep)
+            cadastrar_cliente(nome, cpf, telefone, endereco, cep, cidade)  # Passar cidade
 
         self.accept()
 
+
 if __name__ == '__main__':
-    init_db()
     app = QApplication(sys.argv)
-    app.setStyle('Fusion')
-    main_window = MainWindow()
-    main_window.show()
+    carregar_estilos(app, 'styles.qss')
+    window = MainWindow()
+    window.show()
     sys.exit(app.exec_())
